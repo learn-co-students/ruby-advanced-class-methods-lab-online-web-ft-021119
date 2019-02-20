@@ -42,9 +42,18 @@ class Song
     self.find_by_name(name)
   end
 
-  def Song.alphabetical
-    @@all.sort
+  def Song.alphabetical()
+    @@all.sort_by{ |song| song.name }
+    #binding.pry
   end
+
+  def Song.new_from_filename(file_name)
+    song = self.new
+    formatted_name = (file_name.split(" - ")[1]).chomp('.mp3')
+    song.artist = file_name.split(" - ")
+    binding.pry
+  end
+
 
 
 
