@@ -47,15 +47,23 @@ class Song
     #binding.pry
   end
 
-  def Song.new_from_filename(file_name)
+  def Song.new_from_filename(filename)
     song = self.new
-    formatted_name = (file_name.split(" - ")[1]).chomp('.mp3')
-    song.artist = file_name.split(" - ")
-    binding.pry
+    song.name = (filename.split(" - ")[1]).chomp(".mp3")
+    song.artist_name = filename.split(" - ")[0]
+    song
+    #binding.pry
   end
 
+  def Song.create_from_filename(filename)
+    song = self.new
+    song.name = (filename.split(" - ")[1]).chomp(".mp3")
+    song.artist_name = filename.split(" - ")[0]
+    @@all<< song
+    song
+  end
 
-
-
-
+  def Song.destroy_all
+    @@all = []
+  end
 end
