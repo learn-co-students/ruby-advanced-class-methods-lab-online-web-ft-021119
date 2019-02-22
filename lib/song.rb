@@ -40,11 +40,19 @@ class Song
     match
   end
 
-  def self.find_or_create_by_name(this_song)
-    binding.pry
-    existing_or_not = nil
-    self.find_by_name(this_song).name == this_song ? :
 
+  def self.find_or_create_by_name(this_song)
+
+    if self.all.include?(self.find_by_name(this_song))
+
+      self.all.each do |songs|
+        if songs.name == this_song
+          songs
+        end
+      end
+    elsif
+      self.create_by_name(this_song)
+    end
   #self.all.collect {|song| song == self.find_by_name(this_song) ? song : self.create_by_name(this_song)}
-end
+  end
 end
