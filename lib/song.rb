@@ -31,15 +31,12 @@ class Song
   end
 
   def self.find_by_name(name)
-    @@all.each do |index|
-      return index if index.name == name
-    end
-    nil
+    x = @@all.find {|index| index.name == name}
   end #end of .find_by_name Class Method
 
   def self.find_or_create_by_name(name)
     song = self.find_by_name(name)
-    if song == nil || song == false
+    if song == nil
       song = self.create_by_name(name)
     else
       song
@@ -52,7 +49,6 @@ class Song
 
   def self.new_from_filename(filename)
     file_ary = filename.split(/[-.]/)
-    # binding.pry
     song = self.create_by_name(file_ary[1].strip!)
     song.artist_name = file_ary[0].strip!
     song
@@ -67,4 +63,5 @@ class Song
   def self.destroy_all
     @@all.clear
   end
+
 end #end of Class
