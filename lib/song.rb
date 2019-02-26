@@ -39,15 +39,21 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
+    # binding.pry
     if self.find_by_name(name) == nil
-
-    else self.create_by_name(name)
+      self.create_by_name(name)
     end
   end
 
+  def self.alphabetical
+    @@all.sort_by {|song| song.name}
+  end
 
-
-
+  # def self.new_from_filename
+  #   binding.pry
+  #   song = Song.new
+  #
+  # end
 
   def save
     self.class.all << self
