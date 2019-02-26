@@ -39,16 +39,9 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    # binding.pry
-# Input of a song's name. We search @@all for a song by that name:
-# If we find it, return it.
-# If we don't find one, create one.
-# How do we refer to the song itself???
-
-    # song = song.name
-    # binding.pry
     if self.find_by_name(name) == nil
-      self.create_by_name(name)
+
+    else self.create_by_name(name)
     end
   end
 
