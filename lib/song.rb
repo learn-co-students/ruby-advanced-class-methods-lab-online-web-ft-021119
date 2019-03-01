@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -39,14 +41,14 @@ class Song
   end
 
   def Song.find_or_create_by_name(name)
-    #Song.create_by_name(name)
-    #Song.find_by_name(name)
-    # this makes sense, but does not work:
-    if Song.find_by_name(name) == nil
-      Song.create_by_name(name)
-    else
-      Song.find_by_name(name)
-    end
+    Song.find_by_name(name) || Song.create_by_name(name)
+
+    # # this makes sense, but does not work:
+    # if Song.find_by_name(name) == nil
+    #   Song.create_by_name(name)
+    # else
+    #   Song.find_by_name(name)
+    # end
   end
 
   def Song.alphabetical()
@@ -72,3 +74,29 @@ class Song
     @@all = []
   end
 end
+
+# def pattern(n)
+#
+#   if n <= 0
+#     return ""
+#   else
+#     nums = *(1..n)
+#     nums.each do |num|
+#       if num.even?
+#         nums.delete(num)
+#       end
+#       nums
+#     end
+#
+#     results = []
+#     nums.each do |n|
+#       n.times do results<< n
+#         results<< "\n"
+#       end
+#     end
+#     results
+#     binding.pry
+#   end
+# end
+#
+# pattern(6)
